@@ -32,7 +32,7 @@ password = password
 4️⃣ Run each file for each set and data processing
 
 ```py
-python P1 - Ivy League.py 
+python 'P1 - Ivy League.py'
 ```
 
 5️⃣ Explore the results on your Neo4j interface
