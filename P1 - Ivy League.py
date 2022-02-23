@@ -1,13 +1,12 @@
 # import the neo4j driver for Python
 from neo4j import GraphDatabase
+import configparser
 
-# Database Credentials
-uri             = "bolt://localhost:7687"
-userName        = "neo4j"
-password        = "123soleil"
+config = configparser.ConfigParser()
+config.read('config.ini')
 
 # Connect to the neo4j database server
-graphDB_Driver  = GraphDatabase.driver(uri, auth=(userName, password))
+graphDB_Driver  = GraphDatabase.driver(config['NEO4J']['uri'], auth=(config['NEO4J']['userName'], config['NEO4J']['password']))
 
 # CQL to delete all nodes and relationships
 cqlDeletePaths = "MATCH (x)-[r]->(y) delete r"
