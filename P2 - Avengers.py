@@ -5,13 +5,13 @@ import re
 import configparser
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('config/config.ini')
 
 # Connect to the neo4j database server
 graphDB_Driver  = GraphDatabase.driver(config['NEO4J']['uri'], auth=(config['NEO4J']['userName'], config['NEO4J']['password']))
 
 # import csv in dataframe
-df = pd.read_csv("avengers.csv")
+df = pd.read_csv("data/avengers.csv")
 
 # CQL to delete all nodes and relationships
 cqlDeletePaths = "MATCH (x)-[r]->(y) delete r"
@@ -26,8 +26,6 @@ for index in df.head(100).iterrows():
     cqlCreate = cqlCreate[:-1]
     cqlCreate += "}),"
 cqlCreate = cqlCreate[:-1]
-
-print(cqlCreate)
 
 cqlCreateGender = """CREATE (male:gender { name: "Homme"}), (female:gender { name: "Femme"})"""
 cqlLinkGenderMale = """match (h:avenger {gender:"male"}), (gh:gender {name:"Homme"}) CREATE (h)-[:is]->(gh)"""

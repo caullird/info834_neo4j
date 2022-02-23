@@ -3,7 +3,7 @@ from neo4j import GraphDatabase
 import configparser
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('config/config.ini')
 
 # Connect to the neo4j database server
 graphDB_Driver  = GraphDatabase.driver(config['NEO4J']['uri'], auth=(config['NEO4J']['userName'], config['NEO4J']['password']))
