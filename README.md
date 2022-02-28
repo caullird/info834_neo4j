@@ -29,7 +29,7 @@ We have established links between the superhero genre! A first approach to imagi
 [NEO4J]
 uri = bolt://localhost:7687
 userName = neo4j
-password = password
+password = password  
 ```
 
 4️⃣ Run each file for each set and data processing
